@@ -1,38 +1,70 @@
 ---
 title: "Lab 1 - Data visualization"
-author: "[INSERT NAME]"
+author: "Dennis Park"
 format: pdf
 editor: visual
 ---
 
 ## Load Packages
 
-```{r}
+```{r, warning = FALSE}
 #| label: load-packages
 #| message: false
 
 library(tidyverse)
+library(viridis)
 ```
 
 ## Exercise 1
 
 (Type your answer to Exercise 1 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
 
+```{r}
+ggplot(data = midwest,
+       aes(x = popdensity)) +
+  geom_histogram(binwidth = 10000)
+```
+
+The shape is skewed right, and there are outliers as there extreme data represented on the right side.
+
 ## Exercise 2
 
 (Type your answer to Exercise 2 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
+
+```{r}
+ggplot(data = midwest,
+       aes(x=percollege, y =percbelowpoverty, color = state)) +
+  geom_point() +
+  labs(x = "percent with degree",
+       y ="percent below poverty",
+       title = "Degree vs poverty") +
+  scale_color_viridis_d()
+```
 
 ## Exercise 3
 
 (Type your answer to Exercise 3 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
 
+In most states, there is a great number of data points where both percent below poverty and percent with degree is between 10-30. The states have a similar overall shape of data but states like OH and IL have some extreme points of data.
+
 ## Exercise 4
 
+```{r}
+ggplot(data = midwest,
+       aes(x=percollege, y =percbelowpoverty, color = state))+
+  geom_point() +
+  labs(x = "percent with degree",
+       y ="percent below poverty",
+       title = "Degree vs poverty")+
+  scale_color_viridis_d()+
+  facet_wrap("state")+
+  geom_smooth(se=FALSE)
+
+
+```
 
 ## Exercise 5
 
-
 ## Exercise 6
-
 
 ## Exercise 7
