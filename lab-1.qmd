@@ -76,6 +76,16 @@ ggplot(data = midwest,
        title = "Area vs State")
 ```
 
+Every state has a median roughly between 0.02 and 0.05. The state WI has the highest median and state IN has the lowest. The state with the single largest county is MI. You can tell by the one extreme data point that MI has that is has a higher area(most right) than any other point. The area of that point is roughly 0.11.
+
 ## Exercise 6
+
+```{r}
+midwest <- midwest |>
+  mutate(metro = if_else(inmetro == 1, "Yes", "No"))
+
+ggplot(data = midwest, 
+       aes(x = state, y = inmetro, fill = metro)) + geom_bar(position = "fill", stat = "identity")
+```
 
 ## Exercise 7
