@@ -63,7 +63,18 @@ ggplot(data = midwest,
 
 ```
 
+I prefer this plot instead of Ex 2 because you can focus on each individual state better. You are able to compare them side by side and with the geom_smooth function, you can see the direction of the data.
+
 ## Exercise 5
+
+```{r}
+ggplot(data = midwest,
+       aes(x=area, y =state, color = state))+
+  geom_boxplot() +
+  labs(x = "area",
+       y ="state",
+       title = "Area vs State")
+```
 
 ## Exercise 6
 
