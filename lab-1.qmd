@@ -85,7 +85,15 @@ midwest <- midwest |>
   mutate(metro = if_else(inmetro == 1, "Yes", "No"))
 
 ggplot(data = midwest, 
-       aes(x = state, y = inmetro, fill = metro)) + geom_bar(position = "fill", stat = "identity")
+       aes(x = state, fill = metro)) + geom_bar(position = "fill") +
+  labs(x = "state",
+       y ="metro",
+       title = "State vs Metro")
+
 ```
 
 ## Exercise 7
+
+```{r}
+
+```
