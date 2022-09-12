@@ -20,9 +20,13 @@ library(viridis)
 (Type your answer to Exercise 1 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
 
 ```{r}
+# label:population-density-of-counties
 ggplot(data = midwest,
        aes(x = popdensity)) +
-  geom_histogram(binwidth = 10000)
+  geom_histogram(binwidth = 10000) +
+  labs(x = "population density",
+       y ="count",
+       title = "Population density of counties")
 ```
 
 The shape is skewed right, and there are outliers as there extreme data represented on the right side.
@@ -32,6 +36,7 @@ The shape is skewed right, and there are outliers as there extreme data represen
 (Type your answer to Exercise 2 here. Add code chunks as needed. Don't forget to label your code chunk. Do not use spaces in code chunk labels.)
 
 ```{r}
+# label:percollege-vs-percentbelowpoverty
 ggplot(data = midwest,
        aes(x=percollege, y =percbelowpoverty, color = state)) +
   geom_point() +
@@ -49,7 +54,8 @@ In most states, there is a great number of data points where both percent below 
 
 ## Exercise 4
 
-```{r}
+```{r, message = FALSE}
+# label:Same-as-#3-with-geom-smooth
 ggplot(data = midwest,
        aes(x=percollege, y =percbelowpoverty, color = state))+
   geom_point() +
@@ -59,8 +65,6 @@ ggplot(data = midwest,
   scale_color_viridis_d()+
   facet_wrap("state")+
   geom_smooth(se=FALSE)
-
-
 ```
 
 I prefer this plot instead of Ex 2 because you can focus on each individual state better. You are able to compare them side by side and with the geom_smooth function, you can see the direction of the data.
@@ -68,6 +72,7 @@ I prefer this plot instead of Ex 2 because you can focus on each individual stat
 ## Exercise 5
 
 ```{r}
+# label:Area-of-county-based-on-state
 ggplot(data = midwest,
        aes(x=area, y =state, color = state))+
   geom_boxplot() +
@@ -81,20 +86,22 @@ Every state has a median roughly between 0.02 and 0.05. The state WI has the hig
 ## Exercise 6
 
 ```{r}
+# label:proportion-of-metro-to-state
 midwest <- midwest |>
   mutate(metro = if_else(inmetro == 1, "Yes", "No"))
 
 ggplot(data = midwest, 
        aes(x = state, fill = metro)) + geom_bar(position = "fill") +
   labs(x = "state",
-       y ="metro",
-       title = "State vs Metro")
+       y ="proportion",
+       title = "State vs Proportion of Metro")
 
 ```
 
 ## Exercise 7
 
 ```{r}
+# label:percent-college-educated-vs-population-density-per-state
 ggplot(data = midwest,
        aes(x=percollege, y = popdensity, color = percbelowpoverty))+ 
   geom_point(alpha = 0.5, size = 2) + 
