@@ -104,7 +104,7 @@ ggplot(data = midwest,
 # label:percent-college-educated-vs-population-density-per-state
 ggplot(data = midwest,
        aes(x=percollege, y = popdensity, color = percbelowpoverty))+ 
-  geom_point(alpha = 0.5, size = 2) + 
+  geom_point(alpha = 0.5, size = 2) + theme_minimal() +
   labs(x = "% college educated", y ="population density (person / unit area)") + 
   facet_wrap("state")
 
